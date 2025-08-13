@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-standalone-pod
+spec:
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+  containers:
+    - args:
+        - '-text={"response":"hello world"}'
+        - '-listen=:8000'
+      image: hashicorp/http-echo:latest
+      imagePullPolicy: IfNotPresent
+      name: webapp
+      ports:
+        - containerPort: 8000
+          name: http
+          protocol: TCP
