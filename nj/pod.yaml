@@ -1,6 +1,8 @@
 apiVersion: v1
 kind: Pod
 metadata:
+  labels:
+    my-label: valuesss
   name: my-standalone-pod
 spec:
   securityContext:
